@@ -826,7 +826,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_weight="0.1"
+                                        android:layout_weight="0.15"
                                         android:layout_height="fill_parent"
                                         android:layout_width="0dp"
                                         android:gravity="center">
@@ -870,7 +870,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_weight="0.1"
+                                        android:layout_weight="0.15"
                                         android:layout_height="fill_parent"
                                         android:layout_width="0dp"
                                         android:gravity="center">
@@ -1087,7 +1087,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_weight="0.1"
+                                        android:layout_weight="0.15"
                                         android:layout_height="fill_parent"
                                         android:layout_width="0dp"
                                         android:gravity="center">
@@ -1131,7 +1131,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_weight="0.1"
+                                        android:layout_weight="0.15"
                                         android:layout_height="fill_parent"
                                         android:layout_width="0dp"
                                         android:gravity="center">

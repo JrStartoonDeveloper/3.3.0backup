@@ -834,6 +834,7 @@
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/kranthi_burra_0"
                     android:orientation="horizontal"
@@ -846,6 +847,79 @@
 
 
 
+
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="60dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <LinearLayout
+                        android:layout_weight="0.9"
+                        android:layout_height="fill_parent"
+                        android:layout_width="0dp">
+                        <LinearLayout android:orientation="vertical"
+                            android:layout_height="fill_parent"
+                            android:layout_width="fill_parent">
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:layout_height="fill_parent"
+                                android:layout_width="match_parent">
+
+                                <TextView
+                                    android:id="@+id/report_limit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pheezee_font"
+                                    android:text="20"
+                                    android:textFontWeight="1000"
+                                    android:textSize="20dp" />
+
+                                <TextView
+                                    android:paddingLeft="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16dp"
+                                    android:textColor="#002647"
+                                    android:text="exercises done today"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_weight="1"
+
+                                android:layout_height="fill_parent"
+                                android:layout_width="match_parent">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#AEACAC"
+                                    android:fontFamily="@font/pheezee_font"
+                                    android:textSize="14dp"
+                                    android:text="out of 20"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_weight="0.1"
+                        android:layout_height="fill_parent"
+                        android:layout_width="0dp">
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/machudu"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
                 <LinearLayout

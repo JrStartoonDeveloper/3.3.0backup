@@ -46,6 +46,7 @@ import com.start.apps.pheezee.pojos.PhizioSessionReportData;
 import com.start.apps.pheezee.pojos.PremiumPopupData;
 import com.start.apps.pheezee.pojos.PremiumSubscriptionUserData;
 import com.start.apps.pheezee.pojos.ReportCommunicationData;
+import com.start.apps.pheezee.pojos.ReportCountData;
 import com.start.apps.pheezee.pojos.ReportStatusData;
 import com.start.apps.pheezee.pojos.ResponseData;
 import com.start.apps.pheezee.pojos.SceduledSessionNotSaved;
@@ -67,6 +68,7 @@ import com.start.apps.pheezee.pojos.ViewSessionReportDataSort;
 import com.start.apps.pheezee.pojos.ViewStatusSessionHistory;
 import com.start.apps.pheezee.pojos.ViewSummaryDetails;
 import com.start.apps.pheezee.pojos.WarrantyData;
+import com.start.apps.pheezee.popup.ReportCountDataRec;
 import com.start.apps.pheezee.popup.SessionSummeryDataRec;
 import com.start.apps.pheezee.popup.viewRecommandDataRec;
 import com.start.apps.pheezee.room.Entity.MqttSync;
@@ -173,6 +175,8 @@ public interface GetDataService {
     @POST("/api/recommanded_assigment_bilateral")
     Call<viewRecommandDataRec> view_bilateral_Side (@Body ViewRecommandations data);
 
+    @POST("/api/max_exeises")
+    Call<ReportCountDataRec> Report_count_Data (@Body ReportCountData data);
     @POST("/api/premium_pop")
     Call<PremiumPopupDataRec> enable_Popup (@Body PremiumPopupData data);
 

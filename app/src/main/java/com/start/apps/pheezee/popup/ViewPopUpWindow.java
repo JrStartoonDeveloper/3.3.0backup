@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -68,6 +69,7 @@ import com.start.apps.pheezee.adapters.Affectedside_adapter;
 import com.start.apps.pheezee.pojos.PatientDetailsData;
 //import com.start.apps.pheezee.pojos.ViewHealthySideData;
 import com.start.apps.pheezee.pojos.PremiumSubscriptionUserData;
+import com.start.apps.pheezee.pojos.ReportCountData;
 import com.start.apps.pheezee.pojos.SessionDisabledata;
 import com.start.apps.pheezee.pojos.ViewRecommandations;
 import com.start.apps.pheezee.retrofit.GetDataService;
@@ -166,18 +168,7 @@ public class ViewPopUpWindow{
         final String[] case_description = {""};
         final String[] case_00 ={""};
 
-//        Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
-//        Point size = new Point();display.getSize(size);int width = size.x;int height = size.y;
-//        LayoutInflater inflater = (LayoutInflater) context
-//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        assert inflater != null;
-//        @SuppressLint("InflateParams") View layout ;
-//        if(width>600){
-//            layout= inflater.inflate(R.layout.view_pop, null);
-//        }
-//        else{
-//            layout= inflater.inflate(R.layout.view_pop_2, null);
-//        }
+
         Configuration config = ((Activity)context).getResources().getConfiguration();
         final View layout;
         Log.e("abhbyscybdy",String.valueOf(config.smallestScreenWidthDp));
@@ -239,6 +230,7 @@ public class ViewPopUpWindow{
         final Button start_session_Disable_btr = layout.findViewById(R.id.start_session_disable);
         ScrollView Page_ScrollView=layout.findViewById(R.id.scrollView);
         Toolbar Page_ToolBar=layout.findViewById(R.id.my_toolbar_bodypart);
+        final TextView report_limit_kt = layout.findViewById(R.id.report_limit);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final  TextView alertText1 = layout.findViewById(R.id.alert_text1);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final  TextView alertText2 = layout.findViewById(R.id.alert_text2);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final LinearLayout alertlayoutouter=layout.findViewById(R.id.alert_outer_view);
@@ -394,20 +386,43 @@ public class ViewPopUpWindow{
                     tv_goal_num_value_phone.setText(view_data_goal.concat("%"));
                 }
 
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH) + 1; // Month value is 0-based, so adding 1
+                int day1 = calendar.get(Calendar.DAY_OF_MONTH);
+                // Create a string representation of the date
+                String currentDate = year + "-" + month + "-" + day1;
+                ReportCountData reportdata = new ReportCountData(json_phizioemail, patient.getPatientid(),currentDate);
+                Call<ReportCountDataRec> reportCountDataRecCall = getDataService.Report_count_Data(reportdata);
+                reportCountDataRecCall.enqueue(new Callback<ReportCountDataRec>() {
+                    @SuppressLint("ResourceAsColor")
+                    @Override
+                    public void onResponse(Call<ReportCountDataRec> call, Response<ReportCountDataRec> response) {
+                        if(response.code()==200){
+                            ReportCountDataRec res=response.body();
+                            Log.e("111111111111111111111111111122222222222222",res.getSessionDetails());
+                            String report_limit_value = res.getSessionDetails();
+                            int value=Integer.valueOf(report_limit_value);
+                            if(value>=20){
+                                report_limit_kt.setText(report_limit_value);
+                                report_limit_kt.setTextColor(Color.parseColor("#CC2016"));
+                            }
+                            else{
+                                report_limit_kt.setText(report_limit_value);
+                                report_limit_kt.setTextColor(Color.parseColor("#002647"));}
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ReportCountDataRec> call, Throwable t) {
+
+                    }
+                });
 
 
 
 
-//                Animation fadeInAnimation = new AlphaAnimation(0, 1);
-//                fadeInAnimation.setDuration(1000);
-//                Animation animation = new ScaleAnimation(0.2f, 1,1 , 1,
-//                        Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 1);
-//                animation.setDuration(1000);
-//                AnimationSet animationSet = new AnimationSet(true);
-//                animationSet.addAnimation(fadeInAnimation);
-//                animationSet.addAnimation(animation);
-//                alertlayout.setVisibility(View.VISIBLE);
-//                alertlayout.startAnimation(animationSet);
                 try{
                     if(patient.getPatientinjured().equalsIgnoreCase("Bi-Lateral")){
                         HealthySide_Text.setVisibility(View.GONE);
